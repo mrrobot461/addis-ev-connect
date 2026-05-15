@@ -75,11 +75,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Voltix — EV Garage & Service, Addis Ababa" },
       { name: "description", content: "Premium EV charger installation, inspection, repair, and roadside assistance in Addis Ababa." },
       { name: "author", content: "Voltix EV" },
-      { property: "og:title", content: "Voltix — EV Garage & Service" },
-      { property: "og:description", content: "Book EV repair, install chargers, browse spare parts and check battery health." },
+      { property: "og:title", content: "Voltix — EV Garage & Service, Addis Ababa" },
+      { property: "og:description", content: "Premium EV charger installation, inspection, repair, and roadside assistance in Addis Ababa." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Voltix — EV Garage & Service, Addis Ababa" },
+      { name: "twitter:description", content: "Premium EV charger installation, inspection, repair, and roadside assistance in Addis Ababa." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87204ad4-a577-488f-a693-ba243790a243/id-preview-5e750e02--78f603ff-7585-4793-b6f2-12b56f4425d6.lovable.app-1778818489351.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87204ad4-a577-488f-a693-ba243790a243/id-preview-5e750e02--78f603ff-7585-4793-b6f2-12b56f4425d6.lovable.app-1778818489351.png" },
     ],
     links: [
       {
