@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PartsRouteImport } from './routes/parts'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as LoginRouteImport } from './routes/login'
@@ -25,6 +26,11 @@ import { Route as ServicesChargerRouteImport } from './routes/services.charger'
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartsRoute = PartsRouteImport.update({
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
   '/services/emergency': typeof ServicesEmergencyRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
   '/services/emergency': typeof ServicesEmergencyRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
   '/services/emergency': typeof ServicesEmergencyRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/notifications'
     | '/parts'
+    | '/profile'
     | '/services'
     | '/services/charger'
     | '/services/emergency'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/notifications'
     | '/parts'
+    | '/profile'
     | '/services'
     | '/services/charger'
     | '/services/emergency'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/notifications'
     | '/parts'
+    | '/profile'
     | '/services'
     | '/services/charger'
     | '/services/emergency'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   PartsRoute: typeof PartsRoute
+  ProfileRoute: typeof ProfileRoute
   ServicesRoute: typeof ServicesRouteWithChildren
 }
 
@@ -189,6 +202,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/parts': {
@@ -297,6 +317,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   PartsRoute: PartsRoute,
+  ProfileRoute: ProfileRoute,
   ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
