@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PartsRouteImport } from './routes/parts'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as DiagnosticsRouteImport } from './routes/diagnostics'
@@ -29,6 +30,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const PartsRoute = PartsRouteImport.update({
   id: '/parts',
   path: '/parts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/diagnostics': typeof DiagnosticsRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/parts': typeof PartsRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/diagnostics': typeof DiagnosticsRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/parts': typeof PartsRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/diagnostics': typeof DiagnosticsRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/parts': typeof PartsRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/diagnostics'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/parts'
     | '/services'
     | '/services/charger'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/diagnostics'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/parts'
     | '/services'
     | '/services/charger'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/diagnostics'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/parts'
     | '/services'
     | '/services/charger'
@@ -165,6 +177,7 @@ export interface RootRouteChildren {
   DiagnosticsRoute: typeof DiagnosticsRoute
   HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
   PartsRoute: typeof PartsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
 }
@@ -183,6 +196,13 @@ declare module '@tanstack/react-router' {
       path: '/parts'
       fullPath: '/parts'
       preLoaderRoute: typeof PartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -275,6 +295,7 @@ const rootRouteChildren: RootRouteChildren = {
   DiagnosticsRoute: DiagnosticsRoute,
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
   PartsRoute: PartsRoute,
   ServicesRoute: ServicesRouteWithChildren,
 }
