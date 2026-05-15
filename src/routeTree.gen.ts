@@ -9,38 +9,250 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PartsRouteImport } from './routes/parts'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as DiagnosticsRouteImport } from './routes/diagnostics'
+import { Route as AppointmentsRouteImport } from './routes/appointments'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesRepairRouteImport } from './routes/services.repair'
+import { Route as ServicesInspectionRouteImport } from './routes/services.inspection'
+import { Route as ServicesEmergencyRouteImport } from './routes/services.emergency'
+import { Route as ServicesChargerRouteImport } from './routes/services.charger'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartsRoute = PartsRouteImport.update({
+  id: '/parts',
+  path: '/parts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiagnosticsRoute = DiagnosticsRouteImport.update({
+  id: '/diagnostics',
+  path: '/diagnostics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppointmentsRoute = AppointmentsRouteImport.update({
+  id: '/appointments',
+  path: '/appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesRepairRoute = ServicesRepairRouteImport.update({
+  id: '/repair',
+  path: '/repair',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesInspectionRoute = ServicesInspectionRouteImport.update({
+  id: '/inspection',
+  path: '/inspection',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesEmergencyRoute = ServicesEmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesChargerRoute = ServicesChargerRouteImport.update({
+  id: '/charger',
+  path: '/charger',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/appointments': typeof AppointmentsRoute
+  '/diagnostics': typeof DiagnosticsRoute
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/charger': typeof ServicesChargerRoute
+  '/services/emergency': typeof ServicesEmergencyRoute
+  '/services/inspection': typeof ServicesInspectionRoute
+  '/services/repair': typeof ServicesRepairRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/appointments': typeof AppointmentsRoute
+  '/diagnostics': typeof DiagnosticsRoute
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/charger': typeof ServicesChargerRoute
+  '/services/emergency': typeof ServicesEmergencyRoute
+  '/services/inspection': typeof ServicesInspectionRoute
+  '/services/repair': typeof ServicesRepairRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/appointments': typeof AppointmentsRoute
+  '/diagnostics': typeof DiagnosticsRoute
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
+  '/parts': typeof PartsRoute
+  '/profile': typeof ProfileRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/charger': typeof ServicesChargerRoute
+  '/services/emergency': typeof ServicesEmergencyRoute
+  '/services/inspection': typeof ServicesInspectionRoute
+  '/services/repair': typeof ServicesRepairRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/appointments'
+    | '/diagnostics'
+    | '/home'
+    | '/login'
+    | '/notifications'
+    | '/parts'
+    | '/profile'
+    | '/services'
+    | '/services/charger'
+    | '/services/emergency'
+    | '/services/inspection'
+    | '/services/repair'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/appointments'
+    | '/diagnostics'
+    | '/home'
+    | '/login'
+    | '/notifications'
+    | '/parts'
+    | '/profile'
+    | '/services'
+    | '/services/charger'
+    | '/services/emergency'
+    | '/services/inspection'
+    | '/services/repair'
+  id:
+    | '__root__'
+    | '/'
+    | '/appointments'
+    | '/diagnostics'
+    | '/home'
+    | '/login'
+    | '/notifications'
+    | '/parts'
+    | '/profile'
+    | '/services'
+    | '/services/charger'
+    | '/services/emergency'
+    | '/services/inspection'
+    | '/services/repair'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppointmentsRoute: typeof AppointmentsRoute
+  DiagnosticsRoute: typeof DiagnosticsRoute
+  HomeRoute: typeof HomeRoute
+  LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
+  PartsRoute: typeof PartsRoute
+  ProfileRoute: typeof ProfileRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parts': {
+      id: '/parts'
+      path: '/parts'
+      fullPath: '/parts'
+      preLoaderRoute: typeof PartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diagnostics': {
+      id: '/diagnostics'
+      path: '/diagnostics'
+      fullPath: '/diagnostics'
+      preLoaderRoute: typeof DiagnosticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/appointments': {
+      id: '/appointments'
+      path: '/appointments'
+      fullPath: '/appointments'
+      preLoaderRoute: typeof AppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +260,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/repair': {
+      id: '/services/repair'
+      path: '/repair'
+      fullPath: '/services/repair'
+      preLoaderRoute: typeof ServicesRepairRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/inspection': {
+      id: '/services/inspection'
+      path: '/inspection'
+      fullPath: '/services/inspection'
+      preLoaderRoute: typeof ServicesInspectionRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/emergency': {
+      id: '/services/emergency'
+      path: '/emergency'
+      fullPath: '/services/emergency'
+      preLoaderRoute: typeof ServicesEmergencyRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/charger': {
+      id: '/services/charger'
+      path: '/charger'
+      fullPath: '/services/charger'
+      preLoaderRoute: typeof ServicesChargerRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
+interface ServicesRouteChildren {
+  ServicesChargerRoute: typeof ServicesChargerRoute
+  ServicesEmergencyRoute: typeof ServicesEmergencyRoute
+  ServicesInspectionRoute: typeof ServicesInspectionRoute
+  ServicesRepairRoute: typeof ServicesRepairRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesChargerRoute: ServicesChargerRoute,
+  ServicesEmergencyRoute: ServicesEmergencyRoute,
+  ServicesInspectionRoute: ServicesInspectionRoute,
+  ServicesRepairRoute: ServicesRepairRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppointmentsRoute: AppointmentsRoute,
+  DiagnosticsRoute: DiagnosticsRoute,
+  HomeRoute: HomeRoute,
+  LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
+  PartsRoute: PartsRoute,
+  ProfileRoute: ProfileRoute,
+  ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
