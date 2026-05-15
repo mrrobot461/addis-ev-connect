@@ -14,6 +14,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesRepairRouteImport } from './routes/services.repair'
+import { Route as ServicesInspectionRouteImport } from './routes/services.inspection'
 import { Route as ServicesChargerRouteImport } from './routes/services.charger'
 
 const ServicesRoute = ServicesRouteImport.update({
@@ -41,6 +42,11 @@ const ServicesRepairRoute = ServicesRepairRouteImport.update({
   path: '/repair',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesInspectionRoute = ServicesInspectionRouteImport.update({
+  id: '/inspection',
+  path: '/inspection',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesChargerRoute = ServicesChargerRouteImport.update({
   id: '/charger',
   path: '/charger',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
+  '/services/inspection': typeof ServicesInspectionRoute
   '/services/repair': typeof ServicesRepairRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
+  '/services/inspection': typeof ServicesInspectionRoute
   '/services/repair': typeof ServicesRepairRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/charger': typeof ServicesChargerRoute
+  '/services/inspection': typeof ServicesInspectionRoute
   '/services/repair': typeof ServicesRepairRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/services'
     | '/services/charger'
+    | '/services/inspection'
     | '/services/repair'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/services'
     | '/services/charger'
+    | '/services/inspection'
     | '/services/repair'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/services'
     | '/services/charger'
+    | '/services/inspection'
     | '/services/repair'
   fileRoutesById: FileRoutesById
 }
@@ -143,6 +155,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRepairRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/inspection': {
+      id: '/services/inspection'
+      path: '/inspection'
+      fullPath: '/services/inspection'
+      preLoaderRoute: typeof ServicesInspectionRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/charger': {
       id: '/services/charger'
       path: '/charger'
@@ -155,11 +174,13 @@ declare module '@tanstack/react-router' {
 
 interface ServicesRouteChildren {
   ServicesChargerRoute: typeof ServicesChargerRoute
+  ServicesInspectionRoute: typeof ServicesInspectionRoute
   ServicesRepairRoute: typeof ServicesRepairRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesChargerRoute: ServicesChargerRoute,
+  ServicesInspectionRoute: ServicesInspectionRoute,
   ServicesRepairRoute: ServicesRepairRoute,
 }
 
